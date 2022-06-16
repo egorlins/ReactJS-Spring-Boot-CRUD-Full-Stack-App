@@ -18,10 +18,13 @@ or
 npm install bootstrap --save 
 
 # connecting eachother
-https://marketplace.visualstudio.com/items?itemName=xabikos.ReactSnippets
 
+# adding react snippets:
+https://marketplace.visualstudio.com/items?itemName=xabikos.ReactSnippets
+ rcc - to use react snippets
+ 
+ 
 npm install axios --safe
 
- npm install react-router-dom
+npm install react-router-dom
  
- rcc - to use react snippets

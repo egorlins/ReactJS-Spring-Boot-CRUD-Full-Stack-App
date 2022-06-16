@@ -16,12 +16,18 @@ class ListEmployeeComponent extends Component {
         });
     }
 
+    deleteEmployee(id){
+        EmployeeService.deleteEmployeeById(id).then((res) => {
+            this.setState({ employees: this.state.employees.filter(employee=>employee.id !== id)});
+        });
+    }
+
     render() {
         return (
             <div>
                 <h2 className='text-center'>Employees List</h2>
                 <div className='row'>
-                    <Link to="/add-employee">
+                    <Link to="/add-employee/_add">
                         <button className='btn btn-primary'>Add Employee</button>
                     </Link>
                 </div>
@@ -44,7 +50,21 @@ class ListEmployeeComponent extends Component {
                                         <td> {employee.firstName} </td>
                                         <td> {employee.lastName} </td>
                                         <td> {employee.emailId} </td>
+                                        <td>
+                                            {/* //https://stackoverflow.com/questions/53994363/react-router-link-variables-not-converted-to-values
+                                            //https://stackoverflow.com/questions/53994363/react-router-link-variables-not-converted-to-values
+                                             */}
+                                             <Link to={`/add-employee/${employee.id}`}>
+                                                <button className='btn btn-primary'>Update</button>
+                                            </Link>
 
+                                            <button style={{marginLeft:"10px"}} onClick={ () => this.deleteEmployee(employee.id)} className='btn btn-danger'>Delete</button>
+                                            
+                                            <Link to={`/view-employee/${employee.id}`}>
+                                                <button style={{marginLeft:"10px"}} className='btn btn-info'>View</button>
+                                            </Link>
+                                        
+                                        </td>
                                     </tr>
                                 )
                             }
